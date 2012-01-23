@@ -1,0 +1,6 @@
+nose
+mock
+requests
+redis
+pyserial
+https://github.com/gareth-lloyd/pegpy/tarball/master

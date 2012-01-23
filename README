@@ -1,0 +1,6 @@
+I initially had the idea to create a scoreboard using my peggy display
+and use it to project various metrics of our team members' productivity,
+as a fun office talking-point.
+
+I have started with a single, crude metric based on comments on our github
+pull requests. We'll see how it goes down, and where it develops from here.
