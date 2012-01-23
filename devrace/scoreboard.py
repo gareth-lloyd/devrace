@@ -63,9 +63,9 @@ def _convert_for_display(players):
 
 class PeggyScoreboard(object):
     def __init__(self):
-        self.base_image = pbm_lines(settings.BASE_SCOREBOARD_IMAGE)
         self.peggy = FrameDisplayPeggy(settings.PEGGY_DEVICE,
                                        settings.PEGGY_BAUD)
+        self.base_image = pbm_lines(settings.BASE_SCOREBOARD_IMAGE)
         self.peggy.fresh_frame(self.base_image)
 
     def update_scores(self, contest):
