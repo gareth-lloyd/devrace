@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from time import sleep
 from serial.serialutil import SerialException
 from datetime import datetime
@@ -10,12 +11,12 @@ if __name__ == '__main__':
     _reset_trial()
 
     players = [
-        Player('gareth', {'github_login': 'gareth-lloyd'}),
-        Player('colin', {'github_login': 'colinhowe'}),
         Player('christy', {'github_login': 'c-oreills'}),
-        Player('james', {'github_login': 'jmslovatt'}),
-        Player('henrique', {'github_login': 'hjrnunes'}),
+        Player('colin', {'github_login': 'colinhowe'}),
+        Player('gareth', {'github_login': 'gareth-lloyd'}),
         Player('gehan', {'github_login': 'gehan'}),
+        Player('henrique', {'github_login': 'hjrnunes'}),
+        Player('james', {'github_login': 'jmslovatt'}),
     ]
     trials = [
         PullRequestTrial('conversocial', 'conversocial')

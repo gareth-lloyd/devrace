@@ -26,14 +26,18 @@ def get_author(obj, players):
 def award_comment_achievements(pull, comment, pull_author, players):
     key = SEEN_COMMENTS_KEY % pull['number']
     if redis.sismember(key, comment['id']):
+        print 'seen comment previously'
         return
 
     comment_author = get_author(comment, players)
+    print 'comment author:', comment_author
     if comment_author and comment_author != pull_author:
+        print 'points for commenting'
         comment_author.achievements.append(Achievement(1))
 
     if (pull_author and comment_author != pull_author
         and SPARKLES in comment['body']):
+        print 'bonus:', comment['body']
         pull_author.achievements.append(Achievement(4))
 
     redis.sadd(key, comment['id'])
@@ -49,8 +53,10 @@ class PullRequestTrial(object):
         whether it has changed. If there's potentially new information here,
         get the comments and analyze them.
         """
+        print 'inspecting', pull['number']
         key = PULL_UPDATED_KEY % pull['number']
         updated = redis.get(key)
+        print updated
         if updated and updated == pull['updated_at']:
             return
 

@@ -66,12 +66,12 @@ class PeggyScoreboard(object):
         self.peggy = FrameDisplayPeggy(settings.PEGGY_DEVICE,
                                        settings.PEGGY_BAUD)
         self.base_image = pbm_lines(settings.BASE_SCOREBOARD_IMAGE)
-        self.peggy.fresh_frame(self.base_image)
 
     def update_scores(self, contest):
         scores = _convert_for_display(contest.players)
         scores = _normalize_scores(scores, contest.players)
         display_bytes = _convert_to_bytes(scores)
+        self.peggy.fresh_frame(self.base_image)
         self.peggy.additive_frame(display_bytes)
 
 class PrintingScoreboard(object):
