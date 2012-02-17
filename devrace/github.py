@@ -3,7 +3,9 @@ import json
 from datetime import datetime
 
 API_URL = 'https://api.github.com/'
-PULLS_PATH = 'repos/%s/%s/pulls'
+_BASE_PATH = 'repos/%s/%s/'
+PULLS_PATH = _BASE_PATH + 'pulls'
+ISSUES_PATH = _BASE_PATH + 'issues'
 D_FMT = '%Y-%m-%dT%H:%M:%SZ'
 
 def d(date_string):
@@ -37,4 +39,8 @@ class GitPullRequestsClient(object):
 
     def get_pull_request_comments(self, username, repo, pull_number):
         path = PULLS_PATH + '/%s/comments'
-        return self.api_call(path % (username, repo, pull_number))
+        comments = self.api_call(path % (username, repo, pull_number))
+
+        path = ISSUES_PATH + '/%s/comments'
+        comments.extend(self.api_call(path % (username, repo, pull_number)))
+        return comments

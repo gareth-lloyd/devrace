@@ -56,7 +56,6 @@ class PullRequestTrial(object):
         print 'inspecting', pull['number']
         key = PULL_UPDATED_KEY % pull['number']
         updated = redis.get(key)
-        print updated
         if updated and updated == pull['updated_at']:
             return
 
