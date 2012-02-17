@@ -2,6 +2,7 @@ from pegpy.frame import FrameDisplayPeggy
 from pegpy.pbm import pbm_lines
 import settings
 from itertools import izip_longest
+from time import sleep
 
 COLUMN_SEGMENT = 0B0111
 MAX_SCORE = 16
@@ -72,6 +73,7 @@ class PeggyScoreboard(object):
         scores = _normalize_scores(scores, contest.players)
         display_bytes = _convert_to_bytes(scores)
         self.peggy.fresh_frame(self.base_image)
+        sleep(.1)
         self.peggy.additive_frame(display_bytes)
 
 class PrintingScoreboard(object):
